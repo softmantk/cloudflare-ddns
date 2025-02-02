@@ -3,7 +3,7 @@ services:
   cloudflare-ddns:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ../Dockerfile
     container_name: cloudflare-ddns
     security_opt:
       - no-new-privileges:true
