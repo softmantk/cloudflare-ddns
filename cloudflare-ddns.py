@@ -62,9 +62,8 @@ def getIPs():
     if ipv4_enabled:
         try:
             a = requests.get(
-                "https://1.1.1.1/cdn-cgi/trace").text.split("\n")
-            a.pop()
-            a = dict(s.split("=") for s in a)["ip"]
+                "https://api.ipify.org/?format=json").json()
+            a = a['ip']
         except Exception:
             global shown_ipv4_warning
             if not shown_ipv4_warning:
@@ -86,9 +85,8 @@ def getIPs():
     if ipv6_enabled:
         try:
             aaaa = requests.get(
-                "https://[2606:4700:4700::1111]/cdn-cgi/trace").text.split("\n")
-            aaaa.pop()
-            aaaa = dict(s.split("=") for s in aaaa)["ip"]
+                "https://api64.ipify.org/?format=json").json()
+            aaaa = aaaa['ip']
         except Exception:
             global shown_ipv6_warning
             if not shown_ipv6_warning:
